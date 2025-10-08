@@ -1,0 +1,13 @@
+package pe.upc.ridera.bikelab.payments.interfaces.rest.resources;
+
+import java.math.BigDecimal;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+@Schema(name = "RefundChargeRequest")
+public record RefundChargeRequest(@NotNull @DecimalMin(value = "0.01") BigDecimal amount,
+                                  @NotBlank String reason) {
+}
