@@ -24,4 +24,6 @@ public interface BookingRepository {
     boolean existsActiveBookingForVehicle(UUID vehicleId, Instant startAt, Instant endAt);
 
     List<Booking> findByVehicleIdAndStates(UUID vehicleId, List<BookingState> states);
+
+    long countByState(BookingState state);
 }

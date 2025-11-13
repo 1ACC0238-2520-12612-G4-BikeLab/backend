@@ -19,4 +19,6 @@ public interface VehicleJpaRepository extends JpaRepository<VehicleEntity, UUID>
     @Query("select v from VehicleEntity v where v.latitude between :minLat and :maxLat and v.longitude between :minLng and :maxLng")
     List<VehicleEntity> searchByBoundingBox(@Param("minLat") double minLat, @Param("maxLat") double maxLat,
             @Param("minLng") double minLng, @Param("maxLng") double maxLng);
+
+    long countByStatus(String status);
 }

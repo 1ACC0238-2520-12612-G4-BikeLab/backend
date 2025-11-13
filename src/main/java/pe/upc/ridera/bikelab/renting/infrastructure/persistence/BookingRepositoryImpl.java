@@ -67,4 +67,9 @@ public class BookingRepositoryImpl implements BookingRepository {
                 .map(BookingEntity::toAggregate)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public long countByState(BookingState state) {
+        return bookingJpaRepository.countByState(state);
+    }
 }

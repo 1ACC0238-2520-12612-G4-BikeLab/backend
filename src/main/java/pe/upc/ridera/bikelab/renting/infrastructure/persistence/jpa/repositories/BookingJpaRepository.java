@@ -30,4 +30,6 @@ public interface BookingJpaRepository extends JpaRepository<BookingEntity, UUID>
                                 @Param("endAt") Instant endAt);
 
     List<BookingEntity> findByVehicleIdAndStateIn(UUID vehicleId, Collection<BookingState> states);
+
+    long countByState(BookingState state);
 }

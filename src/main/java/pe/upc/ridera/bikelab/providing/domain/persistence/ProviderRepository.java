@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import pe.upc.ridera.bikelab.providing.domain.model.aggregates.Provider;
+import pe.upc.ridera.bikelab.providing.domain.model.valueobjects.ProviderStatus;
 import pe.upc.ridera.bikelab.providing.domain.persistence.criteria.ProviderSearchCriteria;
 
 /**
@@ -19,4 +20,6 @@ public interface ProviderRepository {
     Optional<Provider> findByUserId(UUID userId);
 
     List<Provider> findAll(ProviderSearchCriteria criteria);
+
+    long countByStatus(ProviderStatus status);
 }

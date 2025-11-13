@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import pe.upc.ridera.bikelab.providing.domain.model.aggregates.Provider;
+import pe.upc.ridera.bikelab.providing.domain.model.valueobjects.ProviderStatus;
 import pe.upc.ridera.bikelab.providing.domain.persistence.ProviderRepository;
 import pe.upc.ridera.bikelab.providing.domain.persistence.criteria.ProviderSearchCriteria;
 import pe.upc.ridera.bikelab.providing.infrastructure.persistence.jpa.entities.ProviderEntity;
@@ -50,7 +51,7 @@ public class JpaProviderRepository implements ProviderRepository {
 
     @Override
     public List<Provider> findAll(ProviderSearchCriteria criteria) {
-        Specification<ProviderEntity> specification = Specification.where((root, query, cb) -> cb.conjunction());
+        Specification<ProviderEntity> specification = Specification.allOf();
         if (criteria.status().isPresent()) {
             specification = specification.and((root, query, cb) -> cb.equal(root.get("status"),
                     criteria.status().get()));
@@ -65,5 +66,10 @@ public class JpaProviderRepository implements ProviderRepository {
         return repository.findAll(specification, DEFAULT_SORT).stream()
                 .map(mapper::toAggregate)
                 .toList();
+    }
+
+    @Override
+    public long countByStatus(ProviderStatus status) {
+        return repository.countByStatus(status);
     }
 }

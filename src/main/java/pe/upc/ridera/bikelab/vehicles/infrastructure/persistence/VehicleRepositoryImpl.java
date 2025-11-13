@@ -60,6 +60,16 @@ public class VehicleRepositoryImpl implements VehicleRepository {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public long count() {
+        return vehicleJpaRepository.count();
+    }
+
+    @Override
+    public long countByStatus(VehicleStatus status) {
+        return vehicleJpaRepository.countByStatus(status.name());
+    }
+
     private VehicleEntity toEntity(Vehicle vehicle) {
         VehicleEntity entity = new VehicleEntity(vehicle.getId(), vehicle.getOwnerId(), vehicle.getStatus().name(),
                 vehicle.getTitle(), vehicle.getDescription(), vehicle.getHourlyPrice(), vehicle.getLatitude(),

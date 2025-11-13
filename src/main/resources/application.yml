@@ -31,6 +31,6 @@ springdoc:
     path: /v3/api-docs
 security:
   jwt:
-    secret: U3VwZXJTZWNyZXRKb3RUb2tlbjEyMzQ1Ng==
+    secret: Ma+cOaNdrJ1ZO2uv5MZeP9vme9PvJWop2k4B4ijowso=
     issuer: BikeLak
     expiration: 3600

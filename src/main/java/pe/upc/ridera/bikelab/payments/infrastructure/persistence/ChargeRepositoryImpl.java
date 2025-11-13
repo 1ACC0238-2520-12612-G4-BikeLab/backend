@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import pe.upc.ridera.bikelab.payments.domain.model.aggregates.Charge;
 import pe.upc.ridera.bikelab.payments.domain.persistence.ChargeRepository;
+import pe.upc.ridera.bikelab.payments.domain.model.valueobjects.ChargeStatus;
 import pe.upc.ridera.bikelab.payments.infrastructure.persistence.jpa.entities.ChargeEntity;
 import pe.upc.ridera.bikelab.payments.infrastructure.persistence.jpa.repositories.ChargeJpaRepository;
 
@@ -33,5 +34,10 @@ public class ChargeRepositoryImpl implements ChargeRepository {
     @Override
     public Optional<Charge> findByIdempotencyKey(String idempotencyKey) {
         return chargeJpaRepository.findByIdempotencyKey(idempotencyKey).map(ChargeEntity::toAggregate);
+    }
+
+    @Override
+    public long countByStatus(ChargeStatus status) {
+        return chargeJpaRepository.countByStatus(status);
     }
 }

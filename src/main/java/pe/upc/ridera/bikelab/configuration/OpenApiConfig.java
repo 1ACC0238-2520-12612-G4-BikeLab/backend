@@ -17,7 +17,8 @@ import org.springframework.context.annotation.Configuration;
                 @Tag(name = "BC: Providing", description = "Administra el registro y soporte de proveedores."),
                 @Tag(name = "BC: Vehicles", description = "Maneja los vehículos y su disponibilidad."),
                 @Tag(name = "BC: Renting", description = "Gestiona las reservas y alquileres."),
-                @Tag(name = "BC: Payments", description = "Procesa métodos de pago, cargos y pagos a proveedores.")
+                @Tag(name = "BC: Payments", description = "Procesa métodos de pago, cargos y pagos a proveedores."),
+                @Tag(name = "BC: Metrics", description = "Exposición pública de estadísticas agregadas.")
         }
 )
 public class OpenApiConfig {
